@@ -10,4 +10,6 @@ import { IsNotEmpty, Matches } from 'class-validator';
   
     @IsNotEmpty({ message: 'Password should not be empty' })
     password: string;
+
+    rememberUser: boolean
 }

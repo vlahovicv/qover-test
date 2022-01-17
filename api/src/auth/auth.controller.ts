@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Post, UnauthorizedException, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Post, UseFilters, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ResponseDataDto } from './dto/response-data.dto';
 import { UserDataDto } from './dto/user-data.dto';
-import { AuthGuardJwt } from './jwt/auth-guard.jwt';
+import { HttpExceptionFilter } from '../filters/HttpException.filter';
 
 @Controller('/api')
 export class AuthController {
@@ -10,8 +10,8 @@ export class AuthController {
         private authService: AuthService,
     ) {}
     
-
-    @UseGuards(AuthGuardJwt)
+    @UseInterceptors(ClassSerializerInterceptor)
+    @UseFilters(HttpExceptionFilter)
     @Post('signup')
     async signUp(
       @Body() userData: UserDataDto,
@@ -19,10 +19,12 @@ export class AuthController {
        return this.authService.createUser(userData);
     }
     
+    @UseInterceptors(ClassSerializerInterceptor)
+    @UseFilters(HttpExceptionFilter)
     @Post('/login')
     async logIn(
       @Body() createUserDto: UserDataDto,
-    ): Promise<ResponseDataDto> {
+    ): Promise<any> {
       return this.authService.findUser(createUserDto);
     }
 }

@@ -1,5 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-//import Car, { createCar }  from './car';
+import { Injectable } from '@nestjs/common';
 import { CarDataDto } from './dto/car-data.dto'
 import { CarRepository } from './car.repository';
 import { CarValues } from './types/CarValues';
@@ -15,18 +14,16 @@ export class CarService {
         return await this.carRepository.getCars()
     }
 
-    async calculatePrice(carDataDto: CarDataDto): Promise<Prices> {
+    async getPrice(carDataDto: CarDataDto): Promise<Prices> {
         const { id, price } = carDataDto
         const car = await this.carRepository.getCar(id)
-
-
-        return this.calcPrice(car, price)
+        return this.calculatePrice(car, price)
     }
 
-    private calcPrice = (car: Car, price: number): Prices => {
+    private calculatePrice = (car: Car, price: number): Prices => {
         const universalPrice = car.globalPrice +  price * car.priceModifier
         const yearlyGlobalPrice = car.globalPrice * 12
-        const yearlyUniversalPrice = car.globalPrice * 12
+        const yearlyUniversalPrice = universalPrice * 12
 
         return {
             globalPrice : car.globalPrice,
@@ -35,18 +32,4 @@ export class CarService {
             yearlyUniversalPrice 
         }
     }
-
-
-    //private calcPrice(car, price): Prices {
-        // const specificCar: Car = createCar(car)
-        // specificCar.calculatePrice(price);
-
-        // return {
-    //         globalPrice : specificCar.globalPrice,
-    //         universalPrice : specificCar.universalPrice ,
-    //         yearlyGlobalPrice : specificCar.yearlyGlobalPrice,
-    //         yearlyUniversalPrice : specificCar.yearlyUniversalPrice
-    //     }
-    // }
-    
 }

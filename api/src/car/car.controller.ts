@@ -1,16 +1,15 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CarService } from './car.service';
 import { CarDataDto } from './dto/car-data.dto';
-import { AuthGuardJwt } from 'src/auth/jwt/auth-guard.jwt';
 import { CarValues } from './types/CarValues';
-//import { AuthGuardJwt } from './jwt/auth-guard.jwt';
+import { AuthGuardJwt } from '../auth/jwt/auth-guard.jwt';
 
 @Controller('/api')
 export class CarController {
     constructor(
         private carService: CarService,
     ) {}
-    //@UseGuards(AuthGuardJwt)
+    @UseGuards(AuthGuardJwt)
     @Get('/cars')
     async getCars(
     ): Promise<CarValues[]> {
@@ -22,6 +21,6 @@ export class CarController {
     async calculatePrice(
       @Body() carDataDto: CarDataDto,
     ): Promise<Prices> {
-      return this.carService.calculatePrice(carDataDto);
+      return this.carService.getPrice(carDataDto);
     }
 }

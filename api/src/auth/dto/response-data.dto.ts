@@ -1,4 +1,7 @@
+import { User } from "../schemas/user.schema"
+import { SerializedUser } from "../types/SerializedUser"
+
 export class ResponseDataDto {
-    email: string
+    user: User
     token: string
 }

@@ -1,3 +1,4 @@
+//Open possibility to put all this data in database
 export enum RejectMessage {
     YOUNG_DRIVER = "Sorry! The driver is too young",
     LOW_PRICE = "Sorry! The price of the car is too low",

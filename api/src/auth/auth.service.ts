@@ -3,6 +3,11 @@ import { UserDataDto } from './dto/user-data.dto';
 import { UserRepository } from './user.repository';
 import { JwtService } from '@nestjs/jwt';
 import { ResponseDataDto } from './dto/response-data.dto';
+import { SerializedUser } from './types/SerializedUser';
+import * as bcrypt from 'bcrypt'
+import { User } from './schemas/user.schema';
+import { BadPasswordException } from './exceptions/BadPassword.exception';
+import { defaultTokenExp, rememberUserTokenExp } from './values';
 
 @Injectable()
 export class AuthService {
@@ -11,31 +16,34 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) {}
 
-    async createUser(userDataDto: UserDataDto): Promise<ResponseDataDto> {
-        console.log(userDataDto)
-        const email: string = await this.userRepository.createUser(userDataDto)
-        if(email) {
-            const token = this.getTokenForUser(email)
-            return {
-                email,
-                token
-            }
-        }
-    }
     async findUser(userDataDto: UserDataDto): Promise<ResponseDataDto> {
-        const email: string = await this.userRepository.findUser(userDataDto)
-        if(email) {
-            const token = this.getTokenForUser(email)
-            return {
-                email,
-                token
-            }
+        const user: User = await this.userRepository.findUser(userDataDto)
+        if(!(await bcrypt.compare(userDataDto.password, user.password))) {
+            throw new BadPasswordException()
+        }
+        const token = this.getTokenForUser(user.email, userDataDto.rememberUser)
+
+        return {
+            user: new SerializedUser(user),
+            token
         }
     }
-    public getTokenForUser(email): string {
+
+    async createUser(userDataDto: UserDataDto): Promise<ResponseDataDto> {
+        const user: User = await this.userRepository.createUser(userDataDto)
+        const token = this.getTokenForUser(user.email, userDataDto.rememberUser)
+        
+        return {
+            user: new SerializedUser(user),
+            token
+        }
+    }
+    
+    public getTokenForUser(email, rememberUser): string {
         return this.jwtService.sign({
             sub: email,
-            expiresIn: 3600
+            expiresIn: rememberUser ? rememberUserTokenExp : defaultTokenExp  
         })
     }
+
 }

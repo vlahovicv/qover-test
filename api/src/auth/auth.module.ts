@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt/jwt.strategy';
 import { User, UserSchema } from './schemas/user.schema';
 import { UserRepository } from './user.repository';
+import { defaultTokenExp } from './values';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { UserRepository } from './user.repository';
         useFactory: async (configService: ConfigService) => ({
           secret: configService.get('JWT_SECRET'),
           signOptions: {
-            expiresIn: 3600,
+            expiresIn: defaultTokenExp,
           },
         }),
       }),
