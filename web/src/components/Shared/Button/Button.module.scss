@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  width: 310px;
+  height: 45px;
+  margin: 35px 0 0;
+  padding: 15px 82.5px 14px;
+  border-radius: 3px;
+  border-color: #317bda;
+  background-color: #317bda;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+
+.calculate {
+  width: 163px;
+  height: 50px;
+  margin: 15px 164px 0 66px;
+  padding: 16px 41px 15px 40px;
+  border-radius: 5px;
+  border: solid 1px #31cfda;
+  background-color: #31cfda;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  font-family: Roboto;
+  margin-left: 160px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px 0 0;
+  object-fit: contain;
+}
+
+.planV1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 353px;
+  height: 55px;
+  border-radius: 5px;
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #31cfda;
+  border-radius: 5px;
+  border: solid 1px #fff;
+  margin-top: 10px;
+}
+
+.planV2 {
+  width: 353px;
+  height: 55px;
+  border-radius: 5px;
+  border: solid 1px #31cfda;
+  background-color: #31cfda;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+}

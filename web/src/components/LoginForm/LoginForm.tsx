@@ -5,16 +5,11 @@ import { useDispatch, useSelector,  } from 'react-redux'
 import { bindActionCreators } from "redux";
 import { loginUser } from '../../store/action-creators'
 import styles from './LoginForm.module.scss';
-import { ReactComponent as Icon } from '../../assets/svg/checked-no-label.svg';
 import CheckBox from "../Shared/CheckBox/CheckBox";
 import { validateLoginForm } from '../../utils/validate/validateLoginForm'
 import { State } from "../../store/reducers";
-//interface state
-interface Props {
 
-}
-
-const LoginForm : FC<Props> = (props: Props): JSX.Element => {
+const LoginForm : FC = (): JSX.Element => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [rememberUser, setRememberUser] = useState(false)
@@ -51,40 +46,37 @@ const LoginForm : FC<Props> = (props: Props): JSX.Element => {
 
     return(
         <div>
-            <form className={styles.form}>
+            <form className={styles.form} id='login' onSubmit={submitForm}>
                 <p className={styles.mainText}>Welcome at Qover</p>
                 <TextField
                     type = 'email'
-                    variant = ''
-                    icon = {false}
+                    variant = 'login'
                     text ='Email'
                     value = {email}
                     errorMsg = {emailMessage}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <br/>
                 <TextField
                     type = 'password'
-                    variant = ''
-                    icon = {false}
+                    variant = 'login'
                     text = 'Password'
                     value = {password}
                     errorMsg = {passwordMessage}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className={styles.test}>
-                    <Icon className={styles.icon}/>
+                <div className={styles.underline}>
                     <CheckBox 
                     label='Remember Me'
-                    rememberMe={(e) => setRememberUser(true)} 
+                    rememberMe={(e) => setRememberUser(!rememberUser)} 
+                    rememberUser={rememberUser}
                     />
                     <a className={styles.passwordText} href='#'>Forgot your password?</a>
                 </div>
                 <Button 
                     text = 'Sign in to your account'
                     icon = {false} 
-                    variant = ''
-                    submitForm={(e) => submitForm(e)}
+                    variant = 'login'
+                    onClick={(e) => submitForm(e)}
                     />
             </form>
         </div>

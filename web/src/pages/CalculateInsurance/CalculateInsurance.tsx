@@ -8,7 +8,9 @@ interface Props {
 const CalculateInsurance : FC<Props> = (props: Props): JSX.Element => {
     return(
     <div className={styles.wrapper}>
-        <InsuranceForm />
+        <div className={styles.color}>
+            <InsuranceForm />
+        </div>
     </div>
     )
 }

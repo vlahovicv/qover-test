@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import authReducer from './authReducer'
-import taxReducer from './taxReducer'
+import insuranceReducer from './insuranceReducer'
 
 const reducers = combineReducers({
     auth: authReducer,
-    tax: taxReducer
+    insurance: insuranceReducer
 })
 
 export default reducers

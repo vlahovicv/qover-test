@@ -1,11 +1,9 @@
-import { ChangeEvent, FC } from "react";
 import styles from './TextField.module.scss'
 
 interface Props {
   type: string,
   value: string,
   variant: string
-  icon: boolean,
   text: string
   errorMsg: string
   onChange?: (
@@ -17,18 +15,23 @@ const TextField: React.FC<Props> = ({
   type,
   value,
   variant,
-  icon,
   text,
   errorMsg,
   onChange }): JSX.Element => {
-  
+    const wrapper = `${variant}Wrapper`
     return (
-      <div className='asd'>
-        {icon ? <i className='asd'/> : ''}
-        <p className={styles.title}>{text}</p>
-        <input className={styles.input} type={type} value={value} onChange={onChange}/>
-        {errorMsg ?? <p className={styles.errorMsg}>{errorMsg}</p>}
-      </div>
+        <div className={styles[wrapper]}>
+          <p className={styles.title}>{text}</p>
+          <div style={{flexDirection:"column"}}>
+            <input 
+              className={errorMsg && variant === 'calculate' ? styles.calculateError : styles[variant]} 
+              type={type} 
+              value={value} 
+              onChange={onChange}
+            />
+            {errorMsg ? <p className={styles.errorMsg}>{errorMsg}</p> : <div className={styles.emptyErrorMsg}>{''}</div>}
+          </div>
+        </div>
     );
   }
 

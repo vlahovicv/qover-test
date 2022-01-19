@@ -1,0 +1,100 @@
+.priceCard {
+  width: 393px;
+  height: 510px;
+  margin: 0 15px 30px 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(72, 72, 72, 0.5);
+}
+
+.selected {
+  background-color: #31cfda;
+  justify-content: center;
+  align-items: center;
+}
+
+.notSelected {
+  background-color: #fff;
+}
+
+.mainText {
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--greyish-brown);
+}
+
+.mainTextSelected {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+
+.priceWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5fdfe;
+}
+
+.priceWrapperSelected {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.priceWithSign {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.price {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 38px;
+  font-weight: bold;
+  color: #31cfda;
+}
+
+.priceSelected {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 38px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.euroSign {
+  margin-left: 10px;
+  margin-top: 8px;
+  color: #31cfda;
+}
+
+.euroSignSelected {
+  margin-left: 10px;
+  margin-top: 8px;
+  color: #fff;
+}
+
+.priceTextDescription {
+  color: #31cfda;
+}
+
+.priceTextDescriptionSelected {
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.line {
+  margin: 0;
+  padding: 0;
+  opacity: 0.1;
+  border: solid 1px gray;
+}

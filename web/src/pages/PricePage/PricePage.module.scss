@@ -1,0 +1,35 @@
+.wrapper {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  z-index: 2;
+  display: flex;
+}
+
+.display {
+  display: flex;
+}
+
+.heading {
+  width: 155px;
+  height: 31px;
+  margin: 0 48px 40px;
+  font-family: Roboto;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh);
+  flex-direction: column;
+  background-color: rgba(72, 72, 72, 0.05);
+  background-image: url("../../assets/svg/background-travel.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-y: -40%;
+}

@@ -1,13 +1,11 @@
-import { ActionType } from '../action-types'
-
 interface loginUser {
     type: string
     payload?: object
 }
 
-interface calculateTax {
+interface calculateInsurance {
     type: string
     payload: object
 }
 
-export type Action = loginUser | calculateTax
+export type Action = loginUser | calculateInsurance

@@ -16,7 +16,7 @@ export class CarController {
       return this.carService.getCars();
     }
 
-    //@UseGuards(AuthGuardJwt)
+    @UseGuards(AuthGuardJwt)
     @Post('/calculate')
     async calculatePrice(
       @Body() carDataDto: CarDataDto,

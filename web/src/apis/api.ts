@@ -8,9 +8,8 @@ type Token = {
   expiresIn: number;
 };
 
-
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:3001/api',
+    baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
       'Content-type': 'application/json',
       Accept: 'application/json',

@@ -10,25 +10,21 @@ import styles from './InsuranceForm.module.scss'
 import axiosClient from "../../apis/api";
 import { validateInsuranceForm } from '../../utils/validate/validateInsuranceForm'
 
-interface Props {
 
-}
-
-const InsuranceForm : FC<Props> = (props: Props): JSX.Element => {
+const InsuranceForm : FC = (): JSX.Element => {
     const [carValues, setCarValues ] = useState([])
     const [age, setAge] = useState('')
     const [ageMessage, setAgeMessage] = useState('')
-    const [car, setCar] = useState('') 
+    const [car, setCar] = useState('Bmw') 
     const [price, setPrice] = useState('')
     const [priceMessage, setPriceMessage] = useState('') 
 
     const dispatch = useDispatch()
     const insuranceActionCreator  = bindActionCreators(calculateInsurance, dispatch)
-    const state = useSelector((state: State) => state.tax)
+    const state = useSelector((state: State) => state.insurance)
     const insuranceState = state['values']
 
     useEffect(() => {
-        console.log(insuranceState)
         if(insuranceState.message){
             switch(insuranceState.reason) {
                 case 'age':
@@ -50,68 +46,50 @@ const InsuranceForm : FC<Props> = (props: Props): JSX.Element => {
         })
     }, []);
     
-    const submitForm = (event) => {
-        const formData = getFormValues(event) 
-        const { id, age, type, price } = formData
+    const submitForm = (e: React.SyntheticEvent) => {
+        e.preventDefault()
+        const cartest = carValues.find( e => e.type === car)
+        const id = cartest.id
         const validateFormFields = validateInsuranceForm(age, price)
-         if (!validateFormFields.isValid) {
+        if (!validateFormFields.isValid) {
             setAgeMessage(validateFormFields.ageMsg)
             setPriceMessage(validateFormFields.priceMsg)
-             return
-         }
+            return
+        }
         setAgeMessage('')
         setPriceMessage('')
-        insuranceActionCreator(id, age, type, price)
+        insuranceActionCreator(id, age, car, price)
     }
-    const getFormValues = (e) => {
-        e.preventDefault()
-        let formValues: string[] = []
-        for(let i = 0; i < e.target.length - 2; i++) {
-            formValues.push(e.target[i].value)
-        }
-        const car = carValues.find( e => e.type === formValues[1])
-        const formData = {
-            id : car.id,
-            age : formValues[0],
-            type: formValues[1],
-            price: formValues[2]
-        }
-        return formData
-    }
+
     return(
         <div>
-            <form onSubmit={submitForm} className={styles.wrapper}>
+            <form onSubmit={submitForm} className={styles.wrapper} >
                 <TextField
-                    type = 'text'
-                    variant = '1'
-                    icon = {false}
+                    type = 'number'
+                    variant = 'calculate'
                     text ='Age of the driver'
                     value = {age}
                     errorMsg = {ageMessage}
                     onChange={(e) => setAge(e.target.value)}
                 />
                 <Select 
-                text = 'Car'
-                options = {carValues}
-                onChange={(e) => setCar(e.target.value)} 
+                    text = 'Car'
+                    options = {carValues}
+                    onChange={(e) => setCar(e.target.value)} 
                 />
                 <TextField
-                    type = 'text'
-                    variant = ''
-                    icon = {true}
+                    type = 'number'
+                    variant = 'calculate'
                     text = 'Purchase Price'
                     value = {price}
                     errorMsg = {priceMessage}
                     onChange={(e) => setPrice(e.target.value)}
                 />
-                <br/>
-                <input type="submit" value="Submit" />
-                <Button 
-                    text = 'test'
-                    icon = {false} 
-                    variant = ''
-                    submitForm={(e) => e.preventDefault()}
-                    />
+                    <Button 
+                        text = 'Get a Price'
+                        icon = {false} 
+                        variant = 'calculate'
+                        />
             </form>
         </div>
     )

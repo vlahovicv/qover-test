@@ -33,10 +33,9 @@ export const loginUser = (email: string, password: string, rememberMe: boolean =
     }
 }
 
-export const calculateInsurance = (id: string, age: string, type: string = 'Audi', price: string): ThunkAction<Promise<void>, RootState, unknown, AnyAction> => {
+export const calculateInsurance = (id: string, age: string, type: string, price: string): ThunkAction<Promise<void>, RootState, unknown, AnyAction> => {
     return async (dispatch: Dispatch<Action>) => {
         axiosClient.post('/calculate', {id, age, type, price}).then((response) =>{
-            console.log(response)
             if(!response.data.message) {
                 history.push('/price')
                 dispatch({
