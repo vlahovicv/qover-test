@@ -17,33 +17,33 @@ export class AuthService {
     ) {}
 
     async findUser(userDataDto: UserDataDto): Promise<ResponseDataDto> {
-        const user: User = await this.userRepository.findUser(userDataDto)
+        const user: User = await this.userRepository.findUser(userDataDto);
         if(!(await bcrypt.compare(userDataDto.password, user.password))) {
-            throw new BadPasswordException()
+            throw new BadPasswordException();
         }
-        const token = this.getTokenForUser(user.email, userDataDto.rememberUser)
+        const token = this.getTokenForUser(user.email, userDataDto.rememberUser);
 
         return {
             user: new SerializedUser(user),
             token
-        }
+        };
     }
 
     async createUser(userDataDto: UserDataDto): Promise<ResponseDataDto> {
-        const user: User = await this.userRepository.createUser(userDataDto)
-        const token = this.getTokenForUser(user.email, userDataDto.rememberUser)
+        const user: User = await this.userRepository.createUser(userDataDto);
+        const token = this.getTokenForUser(user.email, userDataDto.rememberUser);
         
         return {
             user: new SerializedUser(user),
             token
-        }
+        };
     }
     
     public getTokenForUser(email, rememberUser): string {
         return this.jwtService.sign({
             sub: email,
             expiresIn: rememberUser ? rememberUserTokenExp : defaultTokenExp  
-        })
+        });
     }
 
 }

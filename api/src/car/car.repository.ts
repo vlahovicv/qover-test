@@ -14,9 +14,9 @@ export class CarRepository {
           return {
             id : car.id,
             type : car.type
-          }
-        })
-        return values
+          };
+        });
+        return values;
     }
 
     async getCar(id: string): Promise<Car> {

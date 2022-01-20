@@ -8,13 +8,13 @@ export class SerializedUser {
     password: string;
 
     @Exclude()
-    __v: number
+    __v: number;
 
     constructor(partial: Partial<SerializedUser>) {
         const partialUser = {
             id: partial._id.toString(),
             email: partial.email, 
-        }
-        Object.assign(this, partialUser)
+        };
+        Object.assign(this, partialUser);
     }
 }

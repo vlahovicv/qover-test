@@ -3,4 +3,4 @@ type Prices = {
     universalPrice: number,
     yearlyGlobalPrice: number,
     yearlyUniversalPrice: number
-}
+};

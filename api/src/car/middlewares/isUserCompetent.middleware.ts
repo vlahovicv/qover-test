@@ -16,20 +16,20 @@ export class isUserCompetentMiddleware implements NestMiddleware {
             return res.json({
                 message: RejectMessage.YOUNG_DRIVER,
                 reason: 'age'
-            })
+            });
         }
         if(price < Requirements.MINIMUM_PRICE) {
             return res.json({
                 message: RejectMessage.LOW_PRICE,
                 reason: 'price'
-            })
+            });
         }
         if(age < Requirements.MINIMUM_AGE_PORSCHE && carData.type === Requirements.CAR_WITH_AGE_RESTRICTION) {
             return res.json({
                 message: RejectMessage.YOUNG_PORSCHE_DRIVER,
                 reason: 'young-porsche'
-            })
+            });
         }
-        next()
+        next();
     }
 }

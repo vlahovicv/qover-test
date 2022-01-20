@@ -14,10 +14,10 @@ export class UserRepository {
         const { email } = userDataDto
         const user: User = await this.userModel.findOne({email});
         if(!user) {
-            throw new UserNotFoundException(email)
+            throw new UserNotFoundException(email);
         }
         else {
-            return user
+            return user;
         }
     }
 
@@ -25,15 +25,15 @@ export class UserRepository {
         const { email } = userDataDto
         const existingUser = await this.userModel.findOne({ email }).exec();
         if(existingUser) {
-            throw new UserAlreadyExistsException(email)
+            throw new UserAlreadyExistsException(email);
         }
-        userDataDto.password = await this.hashPassword(userDataDto.password)
+        userDataDto.password = await this.hashPassword(userDataDto.password);
         const createdUser = new this.userModel(userDataDto);
         const user: User = await createdUser.save();
-        return user
+        return user;
     }
 
     private async hashPassword(password: string): Promise<string> {
-        return await bcrypt.hash(password, 10)
+        return await bcrypt.hash(password, 10);
     }
 }
