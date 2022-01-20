@@ -22,6 +22,7 @@
   font-size: 18px;
   font-weight: bold;
   color: var(--greyish-brown);
+  padding: 5px;
 }
 
 .mainTextSelected {
@@ -30,9 +31,11 @@
   font-weight: bold;
   text-align: center;
   color: #fff;
+  padding: 5px;
 }
 
 .priceWrapper {
+  padding: 10px;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -40,6 +43,7 @@
 }
 
 .priceWrapperSelected {
+  padding: 10px;
   align-items: center;
   display: flex;
   flex-direction: column;

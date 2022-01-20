@@ -5,10 +5,11 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .logo {
-  margin: 40px 0 20px;
+  margin: 30px 0 20px;
 }
 
 .rectangle {
@@ -39,9 +40,10 @@
 }
 
 .footer {
-  margin: 16px 569px 0 557px;
+  white-space: nowrap;
+  margin: 8px 569px 0 557px;
   font-family: Roboto;
   font-size: 16px;
-  line-height: 1.42;
+  line-height: 3.32;
   color: #fff;
 }
