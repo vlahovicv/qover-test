@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from './Toggle.module.scss'
+import styles from './Toggle.module.scss';
 
 interface Props {
      checked: boolean,
@@ -24,4 +24,4 @@ const Toggle: FC<Props> = ({
     );
   }
 
-  export default Toggle
+  export default Toggle;

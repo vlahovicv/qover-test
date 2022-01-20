@@ -8,4 +8,4 @@ interface calculateInsurance {
     payload: object
 }
 
-export type Action = loginUser | calculateInsurance
+export type Action = loginUser | calculateInsurance;

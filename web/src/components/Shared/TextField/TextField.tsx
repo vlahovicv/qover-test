@@ -1,4 +1,4 @@
-import styles from './TextField.module.scss'
+import styles from './TextField.module.scss';
 
 interface Props {
   type: string,
@@ -36,4 +36,4 @@ const TextField: React.FC<Props> = ({
   }
 
 
-export default TextField
+export default TextField;

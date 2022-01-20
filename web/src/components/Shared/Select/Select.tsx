@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { CarData } from '../../../types/CarData'
-import styles from './Select.module.scss'
+import { CarData } from '../../../types/CarData';
+import styles from './Select.module.scss';
 
 interface Props {
     text: string,
@@ -16,13 +16,13 @@ const Select: FC<Props> = ({
     onChange
     }): JSX.Element => {
 
-    let values
+    let values;
     if(options) {
        values = options.map((option) => {
           let opt = <option key={option.id} value={option.type} >
             {option.type}
           </option>
-          return opt
+          return opt;
       })
     }
     return (
@@ -35,4 +35,4 @@ const Select: FC<Props> = ({
     );
   }
 
-  export default Select
+  export default Select;

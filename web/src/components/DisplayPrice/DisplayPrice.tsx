@@ -11,7 +11,7 @@ interface Props {
     insuranceOfferData: InsuranceOfferData,
     selectedPlan: boolean,
     chosePlan: MouseEventHandler
-}
+};
 const DisplayPrice : FC<Props> = ({
     text,
     price,
@@ -31,7 +31,7 @@ const DisplayPrice : FC<Props> = ({
         priceWrapper,
         euroSign,
         priceTextDescription
-    } = cardStyles(selectedPlan)
+    } = cardStyles(selectedPlan);
     
     return(
         <div className={styles[wrapper] + ' ' + styles.priceCard}>
@@ -59,4 +59,4 @@ const DisplayPrice : FC<Props> = ({
     )
 }
 
-export default DisplayPrice
+export default DisplayPrice;

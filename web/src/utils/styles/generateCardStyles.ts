@@ -1,11 +1,11 @@
-import { CardStyles } from "../../types/CardStyles"
+import { CardStyles } from "../../types/CardStyles";
 
 export const cardStyles = (selectedPlan: boolean): CardStyles => {
-    let selected: string = ''
-    let wrapper: string = 'notSelected'
+    let selected: string = '';
+    let wrapper: string = 'notSelected';
     if(selectedPlan) {
-        selected = 'Selected'
-        wrapper = 'selected'
+        selected = 'Selected';
+        wrapper = 'selected';
     }
     return {
         wrapper,
@@ -18,5 +18,5 @@ export const cardStyles = (selectedPlan: boolean): CardStyles => {
         buttonText : selectedPlan ? 'Plan Selected' : 'Choose this plan',
         icon : selectedPlan ? true : false,
         variant : selectedPlan ? 'planV1' : 'planV2',
-    }
+    };
 } 

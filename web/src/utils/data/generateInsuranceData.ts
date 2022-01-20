@@ -1,4 +1,4 @@
-import { InsuranceOfferData } from "../../types/InsuranceOfferData"
+import { InsuranceOfferData } from "../../types/InsuranceOfferData";
 
 export const generateInsuranceData = (insuranceOfferData: InsuranceOfferData) => {
     return [
@@ -7,5 +7,5 @@ export const generateInsuranceData = (insuranceOfferData: InsuranceOfferData) =>
         `Personal assistance aboard up to ${insuranceOfferData.personalAssistance}`,
         `Travel assistance aboard up to ${insuranceOfferData.travelAssistance}`,
         `Coverage duration: ${insuranceOfferData.coverageDuraton} year`
-    ]
+    ];
 }

@@ -1,13 +1,13 @@
 import { FC, MouseEventHandler } from "react";
-import styles from './Button.module.scss'
-import { ReactComponent as Icon } from '../../../assets/svg/valid.svg'
+import styles from './Button.module.scss';
+import { ReactComponent as Icon } from '../../../assets/svg/valid.svg';
 
 interface Props {
     text: string,
     icon: boolean, 
     variant: string,
     onClick?: MouseEventHandler
-}
+};
 
 const Button: FC<Props> = ({
   text,
@@ -26,4 +26,4 @@ const Button: FC<Props> = ({
     );
   }
 
-  export default Button
+  export default Button;

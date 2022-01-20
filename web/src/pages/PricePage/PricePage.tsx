@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useSelector } from "react-redux";
-import DisplayPrice  from '../../components/DisplayPrice/DisplayPrice'
-import Toggle  from '../../components/Shared/Toggle/Toggle'
+import DisplayPrice  from '../../components/DisplayPrice/DisplayPrice';
+import Toggle  from '../../components/Shared/Toggle/Toggle';
 import { State } from "../../store/reducers";
 import styles from './PricePage.module.scss'
 import { insuranceOfferDataGlobal, insuranceOfferDataUniversal } from "../../consts";
@@ -16,16 +16,16 @@ const PricePage : FC = (): JSX.Element => {
         universalPrice, 
         yearlyGlobalPrice, 
         yearlyUniversalPrice,
-    } = state['values']
+    } = state['values'];
 
     const toggleSwitch = () => {
         setChecked(!checked)
-    }
+    };
 
     const chosePlan = () => {
         setSelected(!selected)
         console.log(selected)
-    }
+    };
 
 
     return(
@@ -52,7 +52,7 @@ const PricePage : FC = (): JSX.Element => {
                     />
             </div>
         </div>
-    )
+    );
 }
 
-export default PricePage
+export default PricePage;

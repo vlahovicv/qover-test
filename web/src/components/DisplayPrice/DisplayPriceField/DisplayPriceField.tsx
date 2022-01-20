@@ -7,13 +7,13 @@ interface Props {
     fieldStyle: string
     insuranceOfferData: InsuranceOfferData
 
-}
+};
 const DisplayPriceField : FC<Props> = ({
     fieldStyle,
     insuranceOfferData
 }): JSX.Element => {
 
-    const generatedData = generateInsuranceData(insuranceOfferData)
+    const generatedData = generateInsuranceData(insuranceOfferData);
 
     const getAllData = (generatedData) => {
         return generatedData.map((value, index) => {
@@ -24,8 +24,8 @@ const DisplayPriceField : FC<Props> = ({
                 </p>
                 <hr className={styles.line}></hr>
             </div>
-            )
-            return field
+            );
+            return field;
         })
     }
     
@@ -37,4 +37,4 @@ const DisplayPriceField : FC<Props> = ({
 }
 
 
-export default DisplayPriceField
+export default DisplayPriceField;

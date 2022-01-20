@@ -1,5 +1,5 @@
 import { FC } from "react";
-import LoginForm  from '../../components/LoginForm/LoginForm'
+import LoginForm  from '../../components/LoginForm/LoginForm';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import styles from './LoginPage.module.scss';
 
@@ -17,7 +17,7 @@ const LoginPage : FC = (): JSX.Element => {
         <hr className={styles.footerLine}></hr>
         <footer className={styles.footer}>© Qover 2017</footer>
     </div>
-    )
+    );
 }
 
-export default LoginPage
+export default LoginPage;

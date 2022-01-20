@@ -1,11 +1,9 @@
 import { FC } from "react";
-import InsuranceForm  from '../../components/InsuranceForm/InsuranceForm'
-import styles from './CalculateInsurance.module.scss'
+import InsuranceForm  from '../../components/InsuranceForm/InsuranceForm';
+import styles from './CalculateInsurance.module.scss';
 
-interface Props {
 
-}
-const CalculateInsurance : FC<Props> = (props: Props): JSX.Element => {
+const CalculateInsurance : FC = (): JSX.Element => {
     return(
     <div className={styles.wrapper}>
         <div className={styles.color}>
@@ -15,4 +13,4 @@ const CalculateInsurance : FC<Props> = (props: Props): JSX.Element => {
     )
 }
 
-export default CalculateInsurance
+export default CalculateInsurance;

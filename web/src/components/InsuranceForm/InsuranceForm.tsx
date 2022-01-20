@@ -12,17 +12,17 @@ import { validateInsuranceForm } from '../../utils/validate/validateInsuranceFor
 
 
 const InsuranceForm : FC = (): JSX.Element => {
-    const [carValues, setCarValues ] = useState([])
-    const [age, setAge] = useState('')
-    const [ageMessage, setAgeMessage] = useState('')
-    const [car, setCar] = useState('Bmw') 
-    const [price, setPrice] = useState('')
-    const [priceMessage, setPriceMessage] = useState('') 
+    const [carValues, setCarValues ] = useState([]);
+    const [age, setAge] = useState('');
+    const [ageMessage, setAgeMessage] = useState('');
+    const [car, setCar] = useState('Bmw') ;
+    const [price, setPrice] = useState('');
+    const [priceMessage, setPriceMessage] = useState('') ;
 
-    const dispatch = useDispatch()
-    const insuranceActionCreator  = bindActionCreators(calculateInsurance, dispatch)
-    const state = useSelector((state: State) => state.insurance)
-    const insuranceState = state['values']
+    const dispatch = useDispatch();
+    const insuranceActionCreator  = bindActionCreators(calculateInsurance, dispatch);
+    const state = useSelector((state: State) => state.insurance);
+    const insuranceState = state['values'];
 
     useEffect(() => {
         if(insuranceState.message){
@@ -38,7 +38,7 @@ const InsuranceForm : FC = (): JSX.Element => {
                     break
             }
         }
-    }, [insuranceState])
+    }, [insuranceState]);
 
     useMemo(() => {
     axiosClient.get('/cars').then((response) =>{
@@ -47,18 +47,18 @@ const InsuranceForm : FC = (): JSX.Element => {
     }, []);
     
     const submitForm = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-        const cartest = carValues.find( e => e.type === car)
-        const id = cartest.id
-        const validateFormFields = validateInsuranceForm(age, price)
+        e.preventDefault();
+        const cartest = carValues.find( e => e.type === car);
+        const id = cartest.id;
+        const validateFormFields = validateInsuranceForm(age, price);
         if (!validateFormFields.isValid) {
-            setAgeMessage(validateFormFields.ageMsg)
-            setPriceMessage(validateFormFields.priceMsg)
-            return
+            setAgeMessage(validateFormFields.ageMsg);
+            setPriceMessage(validateFormFields.priceMsg);
+            return;
         }
-        setAgeMessage('')
-        setPriceMessage('')
-        insuranceActionCreator(id, age, car, price)
+        setAgeMessage('');
+        setPriceMessage('');
+        insuranceActionCreator(id, age, car, price);
     }
 
     return(
@@ -95,4 +95,4 @@ const InsuranceForm : FC = (): JSX.Element => {
     )
 }
 
-export default InsuranceForm
+export default InsuranceForm;
