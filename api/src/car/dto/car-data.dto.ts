@@ -5,7 +5,7 @@ export class CarDataDto {
     id: string
 
     @IsNotEmpty({ message: "Age field is required" })
-    age: string
+    age: number
 
     @IsNotEmpty({ message: "Type field is required" })
     type: string

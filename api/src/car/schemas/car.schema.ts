@@ -5,6 +5,8 @@ export type CarDocument = Car & Document;
 
 @Schema()
 export class Car {
+
+  id: string;
   
   @Prop({ required: true })
   type: string;

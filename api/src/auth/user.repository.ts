@@ -12,7 +12,7 @@ export class UserRepository {
 
     async findUser(userDataDto): Promise<User> {
         const { email } = userDataDto
-        const user: User = await this.userModel.findOne({email});
+        const user: User = await this.userModel.findOne({email}).exec();
         if(!user) {
             throw new UserNotFoundException(email);
         }
