@@ -9,7 +9,7 @@ import history from '../../history';
 export const loginUser = (email: string, password: string, rememberMe: boolean = false): ThunkAction<Promise<void>, RootState, unknown, AnyAction> => {
     return async (dispatch: ThunkDispatch<RootState, unknown, AnyAction>): Promise<void> => {
         axiosClient.post('/login', {email, password, rememberMe}).then((response) => {
-            if(!response.data.msg) {
+            if(response.status === 201) {
                 localStorage.setItem('token', response.data.token);
                 history.push('/calculate');
                 dispatch({

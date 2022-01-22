@@ -1,0 +1,21 @@
+{
+  "name": "playwright-e2e",
+  "version": "1.0.0",
+  "description": "Project used for end to end testing",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "npx playwright test",
+    "e2e-headed": "npx playwright test --headed --browser=chromium",
+    "all-browsers": "npx playwright test --browser=all --headed",
+    "record": "npx playwright codegen localhost:3000",
+    "ci": "npx playwright test --reporter=junit,line"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "playwright": "^1.12.3"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.12.2"
+  }
+}
